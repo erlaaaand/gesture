@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0f;
+  --foreground: #f0f0ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
+}
+
+/* Music bar EQ animations for now-playing indicator */
+@keyframes bar1 {
+  0%, 100% { height: 40%; }
+  50% { height: 90%; }
+}
+@keyframes bar2 {
+  0%, 100% { height: 100%; }
+  33% { height: 30%; }
+  66% { height: 80%; }
+}
+@keyframes bar3 {
+  0%, 100% { height: 50%; }
+  25% { height: 100%; }
+  75% { height: 20%; }
+}
+
+/* Blur-active class for the camera feed overlay */
+.blur-active {
+  filter: blur(20px) brightness(0.7);
+  transition: filter 0.5s ease-in-out;
+}
+
+/* Smooth transition when blur is removed */
+.blur-inactive {
+  filter: blur(0px) brightness(1);
+  transition: filter 0.5s ease-in-out;
+}
+
+/* Dwell progress ring pulse when nearly complete */
+@keyframes dwellPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Gesture status indicator pulse */
+@keyframes peacePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(139, 92, 246, 0); }
+}
